@@ -1,0 +1,8 @@
+Indexing,types, how can index be created using sql
+normalization advantages, 1nf 2nf 3nf bcnf
+stored procedures parameters use in db, use of stored procedures in db
+acid properties of transaction 
+concurrency protocol, timestamp based
+
+
+https://iptv-org.github.io/iptv/index.m3u

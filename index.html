@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <span style="color: white; background-color: red"></span> -->
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus sequi
+      autem iste ab laborum dolorum aut inventore illo blanditiis. Cupiditate
+      enim dolorem nisi. Fugit dignissimos nostrum architecto fuga porro hic,
+      maxime, quis amet, voluptates ipsa quas dolorem eligendi in similique.
+      Temporibus, cupiditate ipsa perferendis numquam asperiores, necessitatibus
+      et rerum, provident adipisci assumenda placeat quae neque.
+    </p>
+  </body>
+  <script>
+    const pTag = document.querySelector("p");
+    const paragraph = document.querySelector("p").innerText;
+    console.log(paragraph);
+    let arr = [];
+    console.log(paragraph.length);
+    let temp = "";
+    for (let index = 0; index < paragraph.length; index++) {
+      if (paragraph[index] === " " || index === paragraph.length-1) {
+        arr.push(temp);
+        temp = "";
+        continue;
+      }
+      temp += paragraph[index];
+    }
+    pTag.innerHTML = ``;
+    for (let index = 0; index < arr.length; index++) {
+      if ((index + 1) % 2 === 0) {
+        pTag.innerHTML += `<span style="color: white; background-color: red;">${arr[index]}</span>`;
+		console.log('hello');
+      }
+	  else
+	  pTag.innerHTML+= ` ${arr[index]} `
+    }
+    console.log(arr);
+  </script>
+</html>
