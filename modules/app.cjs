@@ -1,4 +1,4 @@
-const {add, product, divide} = require('./math.js')
+const {add, product, divide} = require('./math.cjs')
 require('child_process').exec('pwd', (error, stdout)=>{
 	console.log(stdout)
 })
