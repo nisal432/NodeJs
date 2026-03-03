@@ -1,6 +1,7 @@
 function hello(){
 	console.log("hello");
 }
+hello()
 const variable = 11
 const totalObj = {gay: "name",hello}
 export default totalObj

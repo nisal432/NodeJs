@@ -5,3 +5,6 @@ console.log(totalObj);
 hello()
 totalObj.hello()
 console.log(variable);
+
+
+
