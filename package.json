@@ -2,5 +2,8 @@
 	"type": "module",
 	"dependencies": {
 		"procodrr": "^1.0.1"
+	},
+	"scripts": {
+		"dev": "node --watch main.js"
 	}
 }
