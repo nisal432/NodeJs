@@ -5,5 +5,10 @@
 	},
 	"scripts": {
 		"dev": "node --watch main.js"
+	},
+	"name": "hello",
+	"bin": "hello.txtt",
+	"devDependencies": {
+		"@types/node": "^25.3.5"
 	}
 }

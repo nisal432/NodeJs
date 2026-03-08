@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+let sentence
+if(process.argv[2] ===undefined){
+	console.log('This cli helps in counting')
+}
+else{
+	// console.log(process.argv[2]);
+if (process.argv[2] === '-l') {
+	 sentence = process.argv.slice(3)
+}
+else {
+	 sentence = process.argv.slice(2)
+}
+// console.log(sentence);
+const wordLength = sentence.length
+let totalLetters = 0
+sentence.forEach((word) => {
+	totalLetters += word.length
+})
+if (process.argv[2] === '-l')
+	console.log('\n\nThe total letters on your sentence is', totalLetters);
+else
+	console.log('\n\nThe total words on your sentence is', wordLength);}
