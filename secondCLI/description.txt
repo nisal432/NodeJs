@@ -1,0 +1,1 @@
+This is the second CLI app which will count the occurence of all word and  of the given file any file just give me file path.

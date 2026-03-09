@@ -1,0 +1,23 @@
+#!node
+import fs from 'node:fs/promises'
+let path = process.argv[2]
+// path = './secondCLI/test.txt'
+let buffer = await fs.readFile(path)
+const fileContent = buffer.toString()
+// console.log(fileContent);
+const strArray = fileContent.split(' ')
+let fileObj = {}
+strArray.forEach((word)=>{
+	let filteredWord = word.replace('\r', '')
+	filteredWord = filteredWord.replace('\r', '')
+	filteredWord = filteredWord.replace('\n', '')
+	filteredWord = filteredWord.replace('\n', '')
+if(fileObj[filteredWord]){
+	fileObj[filteredWord] +=1
+}
+else{
+	fileObj[filteredWord] = 1
+}
+})
+// console.log(strArray);
+console.log(fileObj);
