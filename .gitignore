@@ -7,3 +7,5 @@ Buffers/video.mp4
 base64VideoBinary.txt
 This is a test to make a video for test
 Buffers/videoCreatedFromBase64.mp4
+bigFile.mp4
+bigFileAppended.txt
