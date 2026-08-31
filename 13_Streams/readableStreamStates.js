@@ -1,5 +1,5 @@
 // readableStreamStates
-//please open the file mentioned on writefile/appendfile after running this code to see the magic i guess 
+//please open the file mentioned on writefile/appendfile after running this codehi to see the magic i guess 
 import fs from 'node:fs'
 const readableStream = fs.createReadStream('chars.txt', {highWaterMark:4})
 let i = 0
