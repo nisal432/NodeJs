@@ -10,6 +10,7 @@ fs.open('temp.txt', (err, fd)=>{
 	console.log(fd);
 })
 //in conclusion we can open the same file twice and file descriptor will increase 
+//we have sync method too which wont take a callback but it will return the fd , it's fs.openSyc
 
 
 
