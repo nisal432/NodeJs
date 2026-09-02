@@ -1,6 +1,6 @@
-// import { AsyncLocalStorage } from 'node:async_hooks'
-// import { off } from 'node:cluster'
+
 import fs from 'node:fs'
+
 // console.time()
 // const variable = 2
 // const writeStream = fs.createWriteStream('lakh.txt', {highWaterMark:10000})
@@ -22,18 +22,22 @@ import fs from 'node:fs'
 
 //now let's see by using file descriptor and writeSync method
 //My custom stream alike
+function calculateRemainingBytes(index, totalsize, dataLength){
+
+}
 console.time()
 const fd = fs.openSync('lakh.txt', 'r+')
-const internalBuffer = Buffer.alloc(10001)
+const totalSize = 893
+const internalBuffer = Buffer.alloc(totalSize)
 let pastChunk // this variable is for referencing the chunk which was added and will be valuable in next iteration when index is more than 10000
 let index = 1
 const totalCount = 100000
 // const tempBuffer = Buffer.alloc(6)
 // console.log(1000%10000); just testning
 for(let i = 1; i<=totalCount; i++){
-	if(index >=10000){
+	if(index >totalSize-1){
 		// console.log('check here ', i);
-		const difference = index - 10000
+		const difference = (index-1) - (totalSize -1)
 		const offset = pastChunk.length - difference
 		fs.writeSync(fd, internalBuffer,1)
 		if(difference){
@@ -49,10 +53,21 @@ for(let i = 1; i<=totalCount; i++){
 	tempBuffer.copy(internalBuffer, index)
 	index += str.length
 	if(i === totalCount ){
-		fs.writeSync(fd ,internalBuffer,1, index-1)
-		fs.writeFileSync(fd, 'hello')
-		}
-
+		// console.log(index);
+		// console.log(pastChunk);
+		let finalBytesRemainingToAdd = index -1 
+		let bytesOverflowed = false
+		if(finalBytesRemainingToAdd > totalSize-1){
+			finalBytesRemainingToAdd = totalSize-1
+			bytesOverflowed = true
+			}
+		let overFlowBytesAfterFinalRemainingBytes = (index -1) - (totalSize-1)
+		fs.writeSync(fd ,internalBuffer,1, finalBytesRemainingToAdd)
+		if(bytesOverflowed)
+			fs.writeSync(fd, pastChunk,( pastChunk.length- overFlowBytesAfterFinalRemainingBytes))
+		// fs.writeFileSync(fd, 'hello')
+	}
+	
 		
 	
 // internalBuffer.writeUint8(i, i-1)
