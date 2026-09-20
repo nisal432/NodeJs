@@ -1,9 +1,9 @@
 import dgram from 'node:dgram'
 import fs from 'node:fs'
-import { type } from 'node:os';
+
 const highWaterMark = 10
-const readStream = fs.createReadStream('lakh.txt', {highWaterMark: highWaterMark}) 
-const stats = fs.statSync("lakh.txt");
+const readStream = fs.createReadStream('./14_Networking/lakh.txt', {highWaterMark: highWaterMark}) 
+const stats = fs.statSync("./14_Networking/lakh.txt");
 const fileSize = stats.size
 console.log(fileSize);
 
