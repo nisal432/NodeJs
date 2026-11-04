@@ -5,6 +5,7 @@ const server = net.createServer((socket)=>{
 	// console.log('server is listening');
 	socket.on('data', (chunk)=>{
 		console.log('Client: ', socket.remoteAddress,  chunk.toString());
+		console.log(socket.readableHighWaterMark, " \\ ", socket.writableHighWaterMark);
 		socket.write( 'HTTP\n\nhello back')
 		// i think this is to make browser believe that it's a http response and it works check it out yourself
 		socket.end()
@@ -41,11 +42,13 @@ setTimeout(() => {
 }, 1000);
 setTimeout(() => {
 	const clientSocket = net.createConnection({port:80,
-		host: '192.168.18.10'
+		host: '192.168.18.10',
 	})
 	clientSocket.write('hello world')
 	clientSocket.on('data', (chunk)=>{
+		
 		console.log('Server: ', clientSocket.remoteAddress,  chunk.toString());
+		console.log(clientSocket.readableHighWaterMark, "  ", clientSocket.writableHighWaterMark);
 	})
 }, 3000);
 

@@ -1,0 +1,6 @@
+------WebKitFormBoundary8YUBgJ7mbvdNq5DE
+Content-Disposition: form-data; name="file"; filename="chars2.txt"
+Content-Type: text/plain
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/
+------WebKitFormBoundary8YUBgJ7mbvdNq5DE--
