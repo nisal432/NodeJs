@@ -1,3 +1,101 @@
-*{
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-regular-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+
+body {
+    font-family: 'Inter', 'Poppins';
+    background: #f8f9fb;
+    color: #252525;
+    padding: 30px;
+}
+.parentAnchor{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+	margin-bottom: 10px;
+}
+.anchor{
+	width: 150px;
+}
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 13px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s,
+                border-color 0.2s;
+}
+.preview-btn {
+    background: #f0f2f7;
+    color: #343944;
+    border-color: #e7e8ed;
+    /* flex: 1; */
+}
+
+.preview-btn:hover {
+    background: #e5e8ef;
+}
+
+.delete-btn {
+    background: #fff;
+    color: #dc4545;
+    border-color: #f0dada;
+}
+
+.delete-btn:hover {
+    background: #fff0f0;
+    border-color: #e9aaaa;
 }

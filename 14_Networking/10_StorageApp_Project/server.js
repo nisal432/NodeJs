@@ -1,6 +1,7 @@
 import http from 'node:http'
 import fs from 'node:fs/promises'
 import { json } from 'node:stream/consumers'
+import { url } from 'node:inspector'
 
 function createJsonObjEntry(file) {
 	const tempObj = {}
@@ -14,6 +15,7 @@ function createJsonObjEntry(file) {
 const server = http.createServer(async (req, res) => {
 	if (req.url == '/') {
 		const fileHandle = await fs.open(`./Public/index.html`)
+
 		const readStream = fileHandle.createReadStream()
 		readStream.pipe(res)
 	}
@@ -22,7 +24,7 @@ const server = http.createServer(async (req, res) => {
 		if (req.url.split('/files')[1] == '') {
 			const fileDir = await fs.readdir(`./Public/`, { withFileTypes: true })
 			fileDir.forEach((file, index) => {
-				
+
 				jsonObj[`number${index + 1}`] = createJsonObjEntry(file)
 
 			})
@@ -33,12 +35,12 @@ const server = http.createServer(async (req, res) => {
 		else {
 			console.log(jsonObj);
 			let str = ''
-			req.url.split('/files').forEach((content)=>{
+			req.url.split('/files').forEach((content) => {
 				str += content
 			})
 			const fileDir = await fs.readdir(`./Public${str}`, { withFileTypes: true })
-					fileDir.forEach((file, index) => {
-				
+			fileDir.forEach((file, index) => {
+
 				jsonObj[`number${index + 1}`] = createJsonObjEntry(file)
 
 			})
@@ -49,14 +51,43 @@ const server = http.createServer(async (req, res) => {
 		// readStream.pipe(res)
 		// res.end('hello')
 	}
-	else{
+	else {
+
 		console.log(req.url);
-		if(req.url == '/frontend.js'){
+		if (req.url.includes('/delete?')) {
+			if (req.url.includes('/delete?dir?')) {
+				const urlStr = req.url.replace('/delete?dir?', '')
+				const pathToDelete = './' + 'Public' + urlStr
+				await fs.rm(pathToDelete, {
+					recursive: true,
+					force: true
+				});
+				return
+			}
+			const urlStr = req.url.replace('/delete?', '')
+			const pathToDelete = './' + 'Public' + urlStr
+			await fs.unlink(pathToDelete)
+			return
+		}
+		if (req.url == '/frontend.js') {
 			res.setHeader('Content-Type', 'text/javascript')
 		}
+
+		if (req.url.includes('/download?')) {
+			res.setHeader('Content-Disposition', 'attachment')
+			const filePath = req.url.replace('/download?', '')
+			const fileHandle = await fs.open(`./Public${filePath}`)
+			const readStream = fileHandle.createReadStream()
+			console.log("download initiated");
+			readStream.pipe(res)
+			
+		}
+		else{
 		const fileHandle = await fs.open(`./Public${req.url}`)
+
+		res.setHeader('Content-Disposition', 'inline')
 		const readStream = fileHandle.createReadStream()
-		readStream.pipe(res)
+		readStream.pipe(res)}
 	}
 
 })
